@@ -52,11 +52,3 @@ app/
 ├── models/            # Modele danych
 └── app.module.ts      # Główny moduł
 ```
-
-## Screenshots
-
-_(Dodaj zrzuty ekranów po testach na urządzeniu/emulatorze)_
-
-## Autor
-
-Student - Projekt zaliczeniowy
