@@ -1,0 +1,64 @@
+<ActionBar [title]="product?.name || 'Szczegóły produktu'" class="action-bar">
+  <NavigationButton (tap)="goBack()" android.systemIcon="ic_menu_back"></NavigationButton>
+</ActionBar>
+
+<ScrollView>
+  <StackLayout class="page">
+    <ActivityIndicator *ngIf="isLoading" busy="true" class="loading"></ActivityIndicator>
+
+    <StackLayout *ngIf="error && !isLoading" class="error-container">
+      <Label [text]="error" class="error-text"></Label>
+      <Button text="Wstecz" (tap)="goBack()" class="btn btn-secondary"></Button>
+    </StackLayout>
+
+    <StackLayout *ngIf="product && !isLoading && !isEditing">
+      <Image *ngIf="getImagePath()" [src]="getImagePath()" class="product-image"></Image>
+      <Label *ngIf="!getImagePath()" text="Brak zdjęcia" class="no-image"></Label>
+
+      <StackLayout class="detail-section">
+        <Label text="Nazwa:" class="label"></Label>
+        <Label [text]="product.name" class="value"></Label>
+      </StackLayout>
+
+      <StackLayout class="detail-section">
+        <Label text="Kod:" class="label"></Label>
+        <Label [text]="product.code" class="value"></Label>
+      </StackLayout>
+
+      <StackLayout class="detail-section">
+        <Label text="Status:" class="label"></Label>
+        <Label [text]="getStatusText(product.status)" class="value"></Label>
+      </StackLayout>
+
+      <StackLayout class="detail-section" *ngIf="product.description">
+        <Label text="Opis:" class="label"></Label>
+        <Label [text]="product.description" class="value description"></Label>
+      </StackLayout>
+
+      <StackLayout class="actions">
+        <Button text="Edytuj" (tap)="startEdit()" class="btn btn-primary"></Button>
+        <Button text="Usuń" (tap)="deleteProduct()" class="btn btn-danger"></Button>
+      </StackLayout>
+    </StackLayout>
+
+    <StackLayout *ngIf="isEditing && !isLoading">
+      <TextField [(ngModel)]="editedProduct.name" hint="Nazwa produktu" class="input"></TextField>
+      <TextField [(ngModel)]="editedProduct.code" hint="Kod produktu" class="input"></TextField>
+      <TextView [(ngModel)]="editedProduct.description" hint="Opis" class="input textarea"></TextView>
+      <Label text="Status:" class="label"></Label>
+      <ListPicker [items]="['available', 'out_of_stock', 'reserved']" 
+                  [selectedIndex]="['available', 'out_of_stock', 'reserved'].indexOf(editedProduct.status)"
+                  (selectedIndexChange)="editedProduct.status = ['available', 'out_of_stock', 'reserved'][$event.value]"
+                  class="picker"></ListPicker>
+
+      <StackLayout *ngIf="error" class="error-container">
+        <Label [text]="error" class="error-text"></Label>
+      </StackLayout>
+
+      <StackLayout class="actions">
+        <Button text="Zapisz" (tap)="saveEdit()" class="btn btn-primary"></Button>
+        <Button text="Anuluj" (tap)="cancelEdit()" class="btn btn-secondary"></Button>
+      </StackLayout>
+    </StackLayout>
+  </StackLayout>
+</ScrollView>
