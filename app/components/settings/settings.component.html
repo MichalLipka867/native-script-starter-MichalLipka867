@@ -1,0 +1,24 @@
+<ActionBar title="Ustawienia" class="action-bar">
+  <NavigationButton (tap)="goBack()" android.systemIcon="ic_menu_back"></NavigationButton>
+</ActionBar>
+
+<ScrollView>
+  <StackLayout class="page settings-page">
+    <Label text="Aplikacja Scan Inventory" class="app-title"></Label>
+    <Label text="Wersja 1.0.0" class="app-version"></Label>
+
+    <StackLayout class="settings-section">
+      <Label text="Funkcje:" class="section-title"></Label>
+      <Label text="• Skanowanie produktów" class="feature-item"></Label>
+      <Label text="• Zarządzanie magazynem" class="feature-item"></Label>
+      <Label text="• Integracja z API" class="feature-item"></Label>
+      <Label text="• Aparat (natywna funkcja)" class="feature-item"></Label>
+    </StackLayout>
+
+    <StackLayout class="settings-section">
+      <Button text="Wyczyść dane lokalne" (tap)="clearData()" class="btn btn-danger"></Button>
+    </StackLayout>
+
+    <Label text="Created by Student" class="footer-text"></Label>
+  </StackLayout>
+</ScrollView>

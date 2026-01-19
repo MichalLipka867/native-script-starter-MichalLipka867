@@ -1,0 +1,29 @@
+<ActionBar title="Dodaj produkt" class="action-bar">
+  <NavigationButton (tap)="goBack()" android.systemIcon="ic_menu_back"></NavigationButton>
+</ActionBar>
+
+<ScrollView>
+  <StackLayout class="page form-page">
+    <StackLayout *ngIf="error" class="error-container">
+      <Label [text]="error" class="error-text"></Label>
+    </StackLayout>
+
+    <Image *ngIf="imagePath" [src]="imagePath" class="preview-image"></Image>
+    <Button text="📷 Zrób zdjęcie" (tap)="takePicture()" class="btn btn-camera" [isEnabled]="!isLoading"></Button>
+
+    <TextField [(ngModel)]="product.name" hint="Nazwa produktu *" class="input"></TextField>
+    <TextField [(ngModel)]="product.code" hint="Kod produktu *" class="input"></TextField>
+    <TextView [(ngModel)]="product.description" hint="Opis produktu" class="input textarea"></TextView>
+
+    <Label text="Status:" class="label"></Label>
+    <ListPicker [items]="['available', 'out_of_stock', 'reserved']" 
+                [selectedIndex]="['available', 'out_of_stock', 'reserved'].indexOf(product.status)"
+                (selectedIndexChange)="product.status = ['available', 'out_of_stock', 'reserved'][$event.value]"
+                class="picker"></ListPicker>
+
+    <Label text="* Pola wymagane" class="required-hint"></Label>
+
+    <Button text="Dodaj produkt" (tap)="onSubmit()" class="btn btn-primary submit-btn" [isEnabled]="!isLoading"></Button>
+    <ActivityIndicator *ngIf="isLoading" busy="true" class="loading"></ActivityIndicator>
+  </StackLayout>
+</ScrollView>
