@@ -1,0 +1,11 @@
+node_modules
+platforms
+*.log
+*.js.map
+.DS_Store
+*.hprof
+.nsbuildinfo
+hooks
+.vscode
+*.tsbuildinfo
+*.local

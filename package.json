@@ -1,0 +1,40 @@
+{
+  "name": "scan-inventory",
+  "version": "1.0.0",
+  "description": "NativeScript Angular app - Scan Inventory",
+  "main": "app.js",
+  "scripts": {
+    "android": "ns run android",
+    "ios": "ns run ios",
+    "clean": "ns clean"
+  },
+  "keywords": [
+    "nativescript",
+    "angular",
+    "inventory"
+  ],
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@angular/animations": "~17.0.0",
+    "@angular/common": "~17.0.0",
+    "@angular/compiler": "~17.0.0",
+    "@angular/core": "~17.0.0",
+    "@angular/forms": "~17.0.0",
+    "@angular/platform-browser": "~17.0.0",
+    "@angular/platform-browser-dynamic": "~17.0.0",
+    "@angular/router": "~17.0.0",
+    "@nativescript/angular": "^17.0.0",
+    "@nativescript/core": "^8.7.0",
+    "@nativescript/theme": "^3.0.2",
+    "nativescript-camera": "^5.0.10",
+    "rxjs": "^7.8.1",
+    "zone.js": "^0.14.2"
+  },
+  "devDependencies": {
+    "@angular/compiler-cli": "~17.0.0",
+    "@nativescript/types": "^8.7.0",
+    "@nativescript/webpack": "^5.0.6",
+    "typescript": "~5.2.2"
+  }
+}
